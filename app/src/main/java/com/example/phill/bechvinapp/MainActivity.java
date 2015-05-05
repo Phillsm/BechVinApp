@@ -1,5 +1,7 @@
 package com.example.phill.bechvinapp;
 
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -10,9 +12,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends FragmentActivity implements Splash.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +26,17 @@ public class MainActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+
     }
+
+        public void clickedButton(View view){
+
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, new SplashScreenHolderFragment())
+                    .commit();
+
+        }
+
 
 
     @Override
@@ -48,6 +61,11 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -63,4 +81,19 @@ public class MainActivity extends ActionBarActivity {
             return rootView;
         }
     }
+
+    public static class SplashScreenHolderFragment extends Fragment {
+
+        public SplashScreenHolderFragment() {
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_splash, container, false);
+            return rootView;
+        }
+    }
+
+
 }
