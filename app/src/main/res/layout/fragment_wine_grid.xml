@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.example.phill.bechvinapp.wineFragment">
+    android:layout_height="match_parent" tools:context="com.example.phill.bechvinapp.wineFragment"
+    android:background="@drawable/bottle_steam_alcohol_wine_grapes_92101_540x960">
 
     <GridView android:id="@android:id/list" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:numColumns="2" />
+        android:layout_height="match_parent" android:numColumns="2" /> /
+        >
+
 
     <TextView android:id="@android:id/empty" android:layout_width="match_parent"
         android:layout_height="match_parent" android:gravity="center" />
+
 
 </FrameLayout>

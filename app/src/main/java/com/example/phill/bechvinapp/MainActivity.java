@@ -17,7 +17,7 @@ import android.os.Build;
 import android.widget.Button;
 
 
-public class MainActivity extends FragmentActivity implements wineFragment.OnFragmentInteractionListener {
+public class MainActivity extends FragmentActivity implements Splash.OnFragmentInteractionListener, wineFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +31,20 @@ public class MainActivity extends FragmentActivity implements wineFragment.OnFra
 
     }
 
-
         public void clickedButton(View view){
 
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new SplashScreenHolderFragment())
-                    .commit();
+
+            Splash newFragment = new Splash();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            // Replace whatever is in the fragment_container view with this fragment,
+            // and add the transaction to the back stack
+            transaction.replace(R.id.container, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
 
         }
 
-    public void browseWines(View view) {
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, new BrowseWineFragmentPlaceHolder())
-                .commit();
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,6 +68,12 @@ public class MainActivity extends FragmentActivity implements wineFragment.OnFra
         return super.onOptionsItemSelected(item);
     }
 
+
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 
     @Override
     public void onFragmentInteraction(String id) {
@@ -104,25 +108,6 @@ public class MainActivity extends FragmentActivity implements wineFragment.OnFra
             return rootView;
         }
     }
-
-
-    public static class BrowseWineFragmentPlaceHolder extends Fragment {
-
-        public BrowseWineFragmentPlaceHolder() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_wine_list, container, false);
-            return rootView;
-        }
-    }
-
-
-
-//        android.app.Fragment newFragment = wineFragment.newInstance("fds","fds");
-
 
 
 }

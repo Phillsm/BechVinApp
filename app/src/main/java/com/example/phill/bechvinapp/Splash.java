@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -22,7 +23,7 @@ import android.widget.Toast;
  * Use the {@link Splash#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Splash extends Fragment implements wineFragment.OnFragmentInteractionListener {
+public class Splash extends Fragment implements wineFragment.OnFragmentInteractionListener, View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,6 +60,7 @@ public class Splash extends Fragment implements wineFragment.OnFragmentInteracti
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -69,7 +71,21 @@ public class Splash extends Fragment implements wineFragment.OnFragmentInteracti
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_splash, container, false);
+
+
+        Button browseProducts = (Button) view.findViewById(R.id.viewProductsButton);
+        browseProducts.setOnClickListener(this);
+
+        Button oldOrders = (Button) view.findViewById(R.id.oldOrdersButton);
+        oldOrders.setOnClickListener(this);
+
+        Button newOrders = (Button) view.findViewById(R.id.newOrderButton);
+        newOrders.setOnClickListener(this);
+
+        return view;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -97,10 +113,35 @@ public class Splash extends Fragment implements wineFragment.OnFragmentInteracti
     }
 
 
+    public void testerButton(){
+
+        wineFragment newFragment = new wineFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+    }
+
+
     @Override
     public void onFragmentInteraction(String id) {
 
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.viewProductsButton:
+            testerButton();
+            case R.id.oldOrdersButton:
+
+            case R.id.newOrderButton:
+
+                break;
+        }
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this
@@ -116,6 +157,5 @@ public class Splash extends Fragment implements wineFragment.OnFragmentInteracti
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
     }
-
 
 }
