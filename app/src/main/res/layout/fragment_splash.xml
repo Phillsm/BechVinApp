@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.example.phill.bechvinapp.Splash">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+
+        android:background="@drawable/wine_glass_bottle_grapes_leaves_43776_540x960"
+
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/place_new_order_button"
+        android:id="@+id/newOrderButton"
+        android:minHeight="150dp"
+        android:minWidth="200dp"
+        android:layout_above="@+id/oldOrdersButton"
+        android:layout_alignLeft="@+id/oldOrdersButton"
+        android:layout_alignStart="@+id/oldOrdersButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/old_orders_button"
+        android:id="@+id/oldOrdersButton"
+        android:minWidth="200dp"
+        android:minHeight="150dp"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/viewProductsButton"
+        android:layout_alignStart="@+id/viewProductsButton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_products_button"
+        android:id="@+id/viewProductsButton"
+        android:minHeight="150dp"
+        android:minWidth="200dp"
+        android:layout_below="@+id/oldOrdersButton"
+        android:layout_centerHorizontal="true"
+        android:enabled="true"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:elegantTextHeight="false"
+        android:onClick="browseWines"
+        android:nestedScrollingEnabled="true" />
+
+</RelativeLayout>
