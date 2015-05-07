@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.phill.bechvinapp.NewProductsFragment">
+
+    <ListView android:id="@+id/" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/wine_glass_bottle_grapes_leaves_43776_540x960"
+        android:dividerHeight="@dimen/abc_action_bar_default_padding_material" />
+
+    <TextView android:id="@android:id/empty" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:gravity="center" />
+
+</FrameLayout>
