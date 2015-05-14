@@ -52,6 +52,7 @@ public class wineFragment extends Fragment implements AbsListView.OnItemClickLis
 
     public static wineFragment newInstance() {
         wineFragment fragment = new wineFragment();
+
         return fragment;
     }
 

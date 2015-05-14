@@ -122,7 +122,7 @@ public class Splash extends Fragment implements
 
         wineFragment newFragment = new wineFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, newFragment);
+        transaction.replace(R.id.container, newFragment.newInstance());
         transaction.addToBackStack(null);
         transaction.commit();
 
@@ -132,7 +132,7 @@ public class Splash extends Fragment implements
 
         OldOrdersFragment newFragment = new OldOrdersFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, newFragment);
+        transaction.replace(R.id.container, newFragment.newInstance("Hej jeg er sat gennem newInstance","Hej jeg er sat gennem newInstance"));
         transaction.addToBackStack(null);
         transaction.commit();
 
@@ -142,7 +142,7 @@ public class Splash extends Fragment implements
 
         NewProductsFragment newFragment = new NewProductsFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, newFragment);
+        transaction.replace(R.id.container, newFragment.newInstance("",""));
         transaction.addToBackStack(null);
         transaction.commit();
 
@@ -157,7 +157,8 @@ public class Splash extends Fragment implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.viewProductsButton:
-            startWineFragment();
+            //startWineFragment();
+            startOldOrdersFragment();
             case R.id.oldOrdersButton:
             startOldOrdersFragment();
             case R.id.newOrderButton:

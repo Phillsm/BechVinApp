@@ -71,14 +71,13 @@ public class OrderFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_order, container, false);
 
 
-        TextView paramTest = (TextView) view.findViewById(R.id.textView1);
-        paramTest.setText(savedInstanceState.get(mParam1).toString());
+        //TextView paramTest = (TextView) view.findViewById(R.id.textView1);
+        //paramTest.setText(savedInstanceState.get(mParam1).toString());
 
-        TextView paramTest2 = (TextView) view.findViewById(R.id.textView2);
-        paramTest2.setText(savedInstanceState.get(mParam2).toString());
+        TextView paramTest = (TextView) view.findViewById(R.id.textView2);
+        paramTest.setText(OrderFragment.ARG_PARAM1);
 
         return view;
-
 
     }
 
@@ -105,7 +104,6 @@ public class OrderFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

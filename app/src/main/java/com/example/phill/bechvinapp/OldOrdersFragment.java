@@ -76,9 +76,12 @@ public class OldOrdersFragment extends Fragment implements AbsListView.OnItemCli
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
+
         // TODO: Change Adapter to display your content
         mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+
     }
 
     @Override
@@ -94,10 +97,13 @@ public class OldOrdersFragment extends Fragment implements AbsListView.OnItemCli
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
 
+        TextView paramTest = (TextView) view.findViewById(R.id.setMe);
+        Bundle b = getArguments();
+        String toSet = b.getString("param1");
+        paramTest.setText(toSet);
+
         return view;
     }
-
-
 
     @Override
     public void onAttach(Activity activity) {
