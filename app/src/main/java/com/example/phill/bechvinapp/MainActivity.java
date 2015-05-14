@@ -17,7 +17,12 @@ import android.os.Build;
 import android.widget.Button;
 
 
-public class MainActivity extends FragmentActivity implements Splash.OnFragmentInteractionListener, wineFragment.OnFragmentInteractionListener {
+public class MainActivity extends FragmentActivity implements
+        Splash.OnFragmentInteractionListener,
+        wineFragment.OnFragmentInteractionListener,
+        NewProductsFragment.OnFragmentInteractionListener,
+        OldOrdersFragment.OnFragmentInteractionListener
+{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
