@@ -15,6 +15,8 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
+import com.example.phill.bechvinapp.DataSource.ApiHelper;
+import com.example.phill.bechvinapp.Model.Product;
 import com.example.phill.bechvinapp.dummy.DummyContent;
 
 /**
@@ -76,11 +78,10 @@ public class OldOrdersFragment extends Fragment implements AbsListView.OnItemCli
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
-
         // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-        android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        ApiHelper api = new ApiHelper(getActivity().getBaseContext());
+        mAdapter = new ArrayAdapter<Product>(getActivity(),
+        android.R.layout.simple_list_item_1, android.R.id.text1, api.getAllWines());
 
     }
 
@@ -138,13 +139,13 @@ public class OldOrdersFragment extends Fragment implements AbsListView.OnItemCli
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        startOrderFragment("hue","hu3");
+        //startOrderFragment("hue","hu3");
 
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
             //mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
-            startOrderFragment("hue","hu3");
+            //startOrderFragment("hue","hu3");
 
         }
     }

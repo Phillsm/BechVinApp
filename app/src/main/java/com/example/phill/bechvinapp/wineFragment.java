@@ -13,6 +13,8 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
+import com.example.phill.bechvinapp.DataSource.ApiHelper;
+import com.example.phill.bechvinapp.Model.Product;
 import com.example.phill.bechvinapp.dummy.DummyContent;
 
 /**
@@ -73,8 +75,13 @@ public class wineFragment extends Fragment implements AbsListView.OnItemClickLis
         }
 
         // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+
+        ApiHelper api = new ApiHelper(getActivity().getBaseContext());
+        mAdapter = new ArrayAdapter<Product>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, api.getAllWines());
+
+//        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
+//                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
     }
 
     @Override
