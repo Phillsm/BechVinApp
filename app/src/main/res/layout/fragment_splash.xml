@@ -45,7 +45,6 @@
         android:focusableInTouchMode="true"
         android:focusable="true"
         android:elegantTextHeight="false"
-        android:onClick="browseWines"
-        android:nestedScrollingEnabled="true" />
+        android:nestedScrollingEnabled="false" />
 
 </RelativeLayout>

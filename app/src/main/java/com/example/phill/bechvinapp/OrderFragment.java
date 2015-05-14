@@ -1,34 +1,24 @@
 package com.example.phill.bechvinapp;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Splash.OnFragmentInteractionListener} interface
+ * {@link OrderFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Splash#newInstance} factory method to
+ * Use the {@link OrderFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Splash extends Fragment implements
-        wineFragment.OnFragmentInteractionListener,
-        NewProductsFragment.OnFragmentInteractionListener,
-        OldOrdersFragment.OnFragmentInteractionListener,
-        View.OnClickListener{
-
+public class OrderFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -38,6 +28,7 @@ public class Splash extends Fragment implements
     private String mParam1;
     private String mParam2;
 
+
     private OnFragmentInteractionListener mListener;
 
     /**
@@ -46,11 +37,11 @@ public class Splash extends Fragment implements
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Splash.
+     * @return A new instance of fragment OrderFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static Splash newInstance(String param1, String param2) {
-        Splash fragment = new Splash();
+    public static OrderFragment newInstance(String param1, String param2) {
+        OrderFragment fragment = new OrderFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,14 +49,13 @@ public class Splash extends Fragment implements
         return fragment;
     }
 
-    public Splash() {
-        // Required empty public constructor
+    public OrderFragment() {
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -77,19 +67,18 @@ public class Splash extends Fragment implements
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_splash, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_order, container, false);
 
 
-        Button browseProducts = (Button) view.findViewById(R.id.viewProductsButton);
-        browseProducts.setOnClickListener(this);
+        TextView paramTest = (TextView) view.findViewById(R.id.textView1);
+        paramTest.setText(savedInstanceState.get(mParam1).toString());
 
-        Button oldOrders = (Button) view.findViewById(R.id.oldOrdersButton);
-        oldOrders.setOnClickListener(this);
-
-        Button newOrders = (Button) view.findViewById(R.id.newOrderButton);
-        newOrders.setOnClickListener(this);
+        TextView paramTest2 = (TextView) view.findViewById(R.id.textView2);
+        paramTest2.setText(savedInstanceState.get(mParam2).toString());
 
         return view;
+
 
     }
 
@@ -115,55 +104,6 @@ public class Splash extends Fragment implements
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-
-    public void startWineFragment(){
-
-        wineFragment newFragment = new wineFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, newFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-
-    }
-
-    public void startOldOrdersFragment(){
-
-        OldOrdersFragment newFragment = new OldOrdersFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, newFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-
-    }
-
-    public void startNewOrderFragment(){
-
-        NewProductsFragment newFragment = new NewProductsFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, newFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-
-    }
-
-    @Override
-    public void onFragmentInteraction(String id) {
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.viewProductsButton:
-            startWineFragment();
-            case R.id.oldOrdersButton:
-            startOldOrdersFragment();
-            case R.id.newOrderButton:
-            startNewOrderFragment();
-                break;
-        }
     }
 
     /**

@@ -1,46 +1,31 @@
 package com.example.phill.bechvinapp;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.phill.bechvinapp.DataSource.ApiHelper;
-import com.example.phill.bechvinapp.DataSource.DataSourceFacade;
-import com.example.phill.bechvinapp.DataSource.OrderDataSource;
-import com.example.phill.bechvinapp.Model.Order;
-import com.example.phill.bechvinapp.Model.Product;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.sql.DataSource;
+import android.os.Build;
+import android.widget.Button;
 
 
-public class MainActivity extends FragmentActivity implements wineFragment.OnFragmentInteractionListener {
+public class MainActivity extends FragmentActivity implements
+        Splash.OnFragmentInteractionListener,
+        wineFragment.OnFragmentInteractionListener,
+        NewProductsFragment.OnFragmentInteractionListener,
+        OldOrdersFragment.OnFragmentInteractionListener
+{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        Date date = new Date();
-        Product p1 = new Product("Testwine1","testid1",100.0);
-        Product p2 = new Product("Testwine2","testid2",150.0);
-        Order o1 = new Order(Order.Status.Created,"1011",date,"Phill");
-
-        DataSourceFacade facade = new DataSourceFacade(this);
-
-        facade.saveOrder(o1);
-
-        List<Order> orders = facade.getAllOrders();
-
-        Log.d("BechWineApp","getallOrders has return the numer of orders: " + orders.size());
-
-        Log.d("BechWineApp","Order 1:"+orders.get(0));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
@@ -51,22 +36,20 @@ public class MainActivity extends FragmentActivity implements wineFragment.OnFra
 
     }
 
-
         public void clickedButton(View view){
 
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new SplashScreenHolderFragment())
-                    .commit();
+
+            Splash newFragment = new Splash();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            // Replace whatever is in the fragment_container view with this fragment,
+            // and add the transaction to the back stack
+            transaction.replace(R.id.container, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
 
         }
 
-    public void browseWines(View view) {
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, new BrowseWineFragmentPlaceHolder())
-                .commit();
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -90,6 +73,12 @@ public class MainActivity extends FragmentActivity implements wineFragment.OnFra
         return super.onOptionsItemSelected(item);
     }
 
+
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 
     @Override
     public void onFragmentInteraction(String id) {
@@ -124,25 +113,6 @@ public class MainActivity extends FragmentActivity implements wineFragment.OnFra
             return rootView;
         }
     }
-
-
-    public static class BrowseWineFragmentPlaceHolder extends Fragment {
-
-        public BrowseWineFragmentPlaceHolder() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_wine_list, container, false);
-            return rootView;
-        }
-    }
-
-
-
-//        android.app.Fragment newFragment = wineFragment.newInstance("fds","fds");
-
 
 
 }
