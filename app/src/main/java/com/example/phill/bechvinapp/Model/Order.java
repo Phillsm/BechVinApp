@@ -89,4 +89,15 @@ public class Order {
         // save to db
     }
 
+   @Override
+    public String toString(){
+
+       String toStringed = "Kunde : " +getCostumer() + "\n" +
+                           "Dato : " + getDate() + "\n" +
+                           "Samlet pris for ordre : " + getPrice() + "\n" +
+                           "Status : " + getStatus();
+
+       return toStringed;
+   }
+
 }

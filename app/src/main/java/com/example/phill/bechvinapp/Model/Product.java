@@ -26,4 +26,11 @@ public class Product {
     public Double getPrice() {
         return price;
     }
+
+    @Override
+    public String toString(){
+
+        String toStringed = "Vinen : " + getName() + "\n" + " Pris : " + getPrice() ;
+        return toStringed;
+    }
 }

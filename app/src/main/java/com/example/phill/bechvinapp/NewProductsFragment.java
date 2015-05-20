@@ -17,6 +17,8 @@ import com.example.phill.bechvinapp.DataSource.ApiHelper;
 import com.example.phill.bechvinapp.Model.Product;
 import com.example.phill.bechvinapp.dummy.DummyContent;
 
+import java.util.ArrayList;
+
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -79,8 +81,24 @@ public class NewProductsFragment extends Fragment implements AbsListView.OnItemC
         // TODO: Change Adapter to display your content
 
         ApiHelper api = new ApiHelper(getActivity().getBaseContext());
-        mAdapter = new ArrayAdapter<Product>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, api.getAllWines());
+
+        ArrayList<Product> products = api.getAllWines();
+
+
+        ArrayList<String> productstoStringed = new ArrayList();
+
+        for(int i = 0; i < products.size(); i++)
+        {
+
+            productstoStringed.add(products.get(i).toString());
+
+        }
+
+
+        mAdapter = new ArrayAdapter<String>(getActivity(),
+
+        android.R.layout.simple_list_item_1, android.R.id.text1, productstoStringed);
+
 
 //        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
 //                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);

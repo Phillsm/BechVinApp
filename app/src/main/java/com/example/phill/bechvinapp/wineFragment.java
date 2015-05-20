@@ -17,6 +17,8 @@ import com.example.phill.bechvinapp.DataSource.ApiHelper;
 import com.example.phill.bechvinapp.Model.Product;
 import com.example.phill.bechvinapp.dummy.DummyContent;
 
+import java.util.ArrayList;
+
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -77,11 +79,29 @@ public class wineFragment extends Fragment implements AbsListView.OnItemClickLis
         // TODO: Change Adapter to display your content
 
         ApiHelper api = new ApiHelper(getActivity().getBaseContext());
-        mAdapter = new ArrayAdapter<Product>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, api.getAllWines());
 
-//        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-//                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        ArrayList<Product> products = api.getAllWines();
+
+        ArrayList<String> names = new ArrayList();
+        ArrayList<String> ids = new ArrayList();
+        ArrayList<Double> prices = new ArrayList();
+        ArrayList<String> toStringed = new ArrayList();
+
+        for(int i = 0; i < products.size(); i++)
+        {
+            names.add(products.get(i).getName());
+            ids.add(products.get(i).getId());
+            prices.add(products.get(i).getPrice());
+            toStringed.add(products.get(i).toString());
+
+        }
+
+
+        mAdapter = new ArrayAdapter<String>(getActivity(),
+
+                android.R.layout.simple_list_item_1, android.R.id.text1, toStringed);
+
+
     }
 
     @Override

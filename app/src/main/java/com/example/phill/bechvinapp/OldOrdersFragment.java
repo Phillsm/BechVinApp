@@ -16,8 +16,14 @@ import android.widget.TextView;
 
 
 import com.example.phill.bechvinapp.DataSource.ApiHelper;
+import com.example.phill.bechvinapp.DataSource.DataSourceFacade;
+import com.example.phill.bechvinapp.DataSource.OrderDataSource;
+import com.example.phill.bechvinapp.Model.Order;
 import com.example.phill.bechvinapp.Model.Product;
 import com.example.phill.bechvinapp.dummy.DummyContent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -79,9 +85,20 @@ public class OldOrdersFragment extends Fragment implements AbsListView.OnItemCli
         }
 
         // TODO: Change Adapter to display your content
-        ApiHelper api = new ApiHelper(getActivity().getBaseContext());
-        mAdapter = new ArrayAdapter<Product>(getActivity(),
-        android.R.layout.simple_list_item_1, android.R.id.text1, api.getAllWines());
+
+        DataSourceFacade orderData = new DataSourceFacade(getActivity().getBaseContext());
+
+        List<Order> orders = orderData.getAllOrders();
+
+        ArrayList<String> orderToStringed = new ArrayList();
+
+        for(int i = 0; i > orders.size(); i++)
+        {
+            orderToStringed.add(orders.get(i).toString());
+        }
+
+        mAdapter = new ArrayAdapter<String>(getActivity(),
+        android.R.layout.simple_list_item_1, android.R.id.text1, orderToStringed);
 
     }
 

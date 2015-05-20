@@ -2,32 +2,25 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/wine_glass_bottle_grapes_leaves_43776_540x960"
     tools:context="com.example.phill.bechvinapp.OldOrdersFragment"
     >
 
     <ListView android:id="@android:id/list" android:layout_width="match_parent"
-        android:layout_height="373dp"
+        android:layout_height="match_parent"
         android:divider="@android:color/background_light"
-        android:dividerHeight="1dp"
+        android:dividerHeight="0dp"
         android:textFilterEnabled="false"
         android:smoothScrollbar="false"
 
         />
 
     <TextView android:id="@android:id/empty" android:layout_width="match_parent"
-        android:layout_height="421dp" android:gravity="center"
+        android:layout_height="match_parent" android:gravity="center"
         android:phoneNumber="false"
         android:singleLine="true"
         android:textIsSelectable="false"
 
         />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/setMe"
-        android:layout_gravity="center" />
 
 </FrameLayout>
