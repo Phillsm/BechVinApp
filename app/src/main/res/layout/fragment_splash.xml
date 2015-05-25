@@ -5,7 +5,7 @@
     <!-- TODO: Update blank fragment layout -->
     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
 
-        android:background="@drawable/wine_glass_bottle_grapes_leaves_43776_540x960"
+        android:background="@drawable/Vinbech2"
 
         />
 
