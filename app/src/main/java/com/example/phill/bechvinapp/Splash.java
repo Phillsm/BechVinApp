@@ -157,7 +157,7 @@ public class Splash extends Fragment implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.viewProductsButton:
-            //startWineFragment();
+            startWineFragment();
             startOldOrdersFragment();
             case R.id.oldOrdersButton:
             startOldOrdersFragment();

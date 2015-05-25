@@ -51,4 +51,31 @@ public class ApiHelper {
         return wines;
     }
 
+
+
+    public ArrayList<String> getAllCustomers(){
+        String json = api.getCostumers();
+
+        ArrayList<String> customers = new ArrayList<>();
+        try {
+            JSONArray jarray = new JSONArray(json);
+
+            Log.d("BechWineApp", "" + jarray.length());
+
+            for(int i = 0; i<jarray.length(); i++){
+
+                String id = jarray.get(i).toString();
+                customers.add(id);
+
+            }
+            Log.d("BechWineApp","Finished parsing wine json");
+        }
+        catch(Exception e){
+            Log.d("BechWineApp", "Error in makin jarray" + e.getMessage() +"\n" + e.getStackTrace().toString());
+            //TODO ERROR HANDLING
+        }
+        return customers;
+    }
+
+
 }

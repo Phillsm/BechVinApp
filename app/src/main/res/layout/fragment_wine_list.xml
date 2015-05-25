@@ -8,12 +8,14 @@
         android:id="@android:id/list" android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textFilterEnabled="false"
-        android:visibility="visible"
-        android:headerDividersEnabled="false" />
+        android:headerDividersEnabled="false"
+
+        android:visibility="visible" />
 
     <TextView
          android:layout_width="match_parent"
         android:layout_height="match_parent" android:gravity="center"
-        android:textColor="@android:color/background_light" />
+        android:textColor="@android:color/background_light"
+        />
 
 </FrameLayout>

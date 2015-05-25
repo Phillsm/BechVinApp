@@ -6,6 +6,7 @@ import java.util.HashMap;
 /**
  * Created by Phill on 12-05-2015.
  */
+
 public class Order {
     Status status;
     String costumer;
@@ -96,7 +97,6 @@ public class Order {
                            "Dato : " + getDate() + "\n" +
                            "Samlet pris for ordre : " + getPrice() + "\n" +
                            "Status : " + getStatus();
-
        return toStringed;
    }
 

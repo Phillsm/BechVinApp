@@ -115,10 +115,10 @@ public class OldOrdersFragment extends Fragment implements AbsListView.OnItemCli
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
 
-        TextView paramTest = (TextView) view.findViewById(R.id.setMe);
-        Bundle b = getArguments();
-        String toSet = b.getString("param1");
-        paramTest.setText(toSet);
+//        TextView paramTest = (TextView) view.findViewById(R.id.setMe);
+//        Bundle b = getArguments();
+//        String toSet = b.getString("param1");
+//        paramTest.setText(toSet);
 
         return view;
     }

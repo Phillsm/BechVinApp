@@ -15,6 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.example.phill.bechvinapp.DataSource.ApiHelper;
+import com.example.phill.bechvinapp.DataSource.ApiMock;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends FragmentActivity implements
@@ -24,10 +30,14 @@ public class MainActivity extends FragmentActivity implements
         OldOrdersFragment.OnFragmentInteractionListener
 {
 
+    ApiHelper api = new ApiHelper(getBaseContext());
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -38,15 +48,22 @@ public class MainActivity extends FragmentActivity implements
 
         public void clickedButton(View view){
 
-
             Splash newFragment = new Splash();
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            // Replace whatever is in the fragment_container view with this fragment,
-            // and add the transaction to the back stack
-            transaction.replace(R.id.container, newFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
+            TextView userId = (TextView) view.findViewById(R.id.userID);
 
+            ArrayList<String> arr = api.getAllCustomers();
+
+            for(int i=0; i<arr.size();i++){
+
+                if("1" == arr.get(i))
+                {
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.container, newFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+
+                };
+            }
         }
 
 
@@ -54,7 +71,13 @@ public class MainActivity extends FragmentActivity implements
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
+
+
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+
+
         return true;
     }
 
@@ -96,8 +119,10 @@ public class MainActivity extends FragmentActivity implements
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
+            View view = inflater.inflate(R.layout.fragment_main, container, false);
+
+
+            return view;
         }
     }
 

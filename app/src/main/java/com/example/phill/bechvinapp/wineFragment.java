@@ -85,6 +85,7 @@ public class wineFragment extends Fragment implements AbsListView.OnItemClickLis
         ArrayList<String> names = new ArrayList();
         ArrayList<String> ids = new ArrayList();
         ArrayList<Double> prices = new ArrayList();
+
         ArrayList<String> toStringed = new ArrayList();
 
         for(int i = 0; i < products.size(); i++)
@@ -96,11 +97,8 @@ public class wineFragment extends Fragment implements AbsListView.OnItemClickLis
 
         }
 
-
-        mAdapter = new ArrayAdapter<String>(getActivity(),
-
-                android.R.layout.simple_list_item_1, android.R.id.text1, toStringed);
-
+       mAdapter = new ArrayAdapter<String>(getActivity(),
+       android.R.layout.simple_list_item_1, android.R.id.text1, toStringed);
 
     }
 
