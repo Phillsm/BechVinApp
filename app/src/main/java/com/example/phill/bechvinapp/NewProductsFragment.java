@@ -174,4 +174,6 @@ public class NewProductsFragment extends Fragment implements AbsListView.OnItemC
         public void onFragmentInteraction(String id);
     }
 
+
+
 }

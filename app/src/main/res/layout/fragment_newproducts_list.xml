@@ -6,12 +6,12 @@
 
     <ListView android:id="@+id/listtest" android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/Vinbech"
+        android:background="@drawable/vinbech"
         android:dividerHeight="@dimen/abc_action_bar_default_padding_material"
 
     />
 
-    <TextView android:id="@+id/" android:layout_width="match_parent"
+    <TextView android:layout_width="match_parent"
         android:layout_height="match_parent" android:gravity="center"
 
         />

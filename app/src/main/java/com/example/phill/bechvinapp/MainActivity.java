@@ -41,29 +41,34 @@ public class MainActivity extends FragmentActivity implements
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
+                    .addToBackStack(null)
                     .commit();
         }
 
     }
 
+
         public void clickedButton(View view){
 
             Splash newFragment = new Splash();
-            TextView userId = (TextView) view.findViewById(R.id.userID);
 
-            ArrayList<String> arr = api.getAllCustomers();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, newFragment);
+            transaction.addToBackStack(Splash.class.getName());
+            transaction.commit();
 
-            for(int i=0; i<arr.size();i++){
-
-                if("1" == arr.get(i))
-                {
-                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.container, newFragment);
-                    transaction.addToBackStack(null);
-                    transaction.commit();
-
-                };
-            }
+//            TextView userId = (TextView) view.findViewById(R.id.userID);
+//
+//            ArrayList<String> arr = api.getAllCustomers();
+//
+//            for(int i=0; i<arr.size();i++){
+//
+//                if("1" == arr.get(i))
+//                {
+//
+//
+//                };
+//            }
         }
 
 
@@ -126,18 +131,13 @@ public class MainActivity extends FragmentActivity implements
         }
     }
 
-    public static class SplashScreenHolderFragment extends Fragment {
-
-        public SplashScreenHolderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_splash, container, false);
-            return rootView;
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0 ){
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
         }
     }
-
 
 }

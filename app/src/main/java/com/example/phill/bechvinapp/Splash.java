@@ -62,6 +62,8 @@ public class Splash extends Fragment implements
         // Required empty public constructor
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -158,9 +160,10 @@ public class Splash extends Fragment implements
         switch (v.getId()) {
             case R.id.viewProductsButton:
             startWineFragment();
-            startOldOrdersFragment();
+                break;
             case R.id.oldOrdersButton:
             startOldOrdersFragment();
+                break;
             case R.id.newOrderButton:
             startNewOrderFragment();
                 break;
