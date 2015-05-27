@@ -42,7 +42,7 @@
         android:layout_centerHorizontal="true"
         android:enabled="true"
         android:clickable="true"
-        android:focusableInTouchMode="true"
+        android:focusableInTouchMode="false"
         android:focusable="true"
         android:elegantTextHeight="false"
         android:nestedScrollingEnabled="false" />

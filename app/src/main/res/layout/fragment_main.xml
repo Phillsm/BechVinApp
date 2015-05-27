@@ -24,7 +24,7 @@
         android:background="@android:color/darker_gray"
         android:nestedScrollingEnabled="false"
         android:focusable="true"
-        android:focusableInTouchMode="true"
+        android:focusableInTouchMode="false"
         android:onClick="clickedButton"
         android:clickable="true" />
 
@@ -38,7 +38,9 @@
         android:background="#fffff9c7"
         android:gravity="center_vertical"
         android:minWidth="230dp"
-        android:minHeight="35dp" />
+        android:minHeight="35dp"
+        android:inputType="number"
+        android:imeOptions="actionDone"/>
 
 
 

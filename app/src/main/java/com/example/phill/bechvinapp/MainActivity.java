@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,12 +16,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.phill.bechvinapp.DataSource.ApiHelper;
 import com.example.phill.bechvinapp.DataSource.ApiMock;
+import com.example.phill.bechvinapp.DataSource.DataSourceFacade;
+import com.example.phill.bechvinapp.Model.Order;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class MainActivity extends FragmentActivity implements
@@ -32,11 +38,14 @@ public class MainActivity extends FragmentActivity implements
 
     ApiHelper api = new ApiHelper(getBaseContext());
 
+    public static String costumerNumber;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -45,6 +54,13 @@ public class MainActivity extends FragmentActivity implements
                     .commit();
         }
 
+        ///testtest
+        Order test = new Order(Order.Status.Created,"1337",new Date(),"attperson");
+
+        DataSourceFacade dsf = new DataSourceFacade(this);
+        dsf.saveOrder(test);
+        //testest
+
     }
 
 
@@ -52,24 +68,30 @@ public class MainActivity extends FragmentActivity implements
 
             Splash newFragment = new Splash();
 
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.container, newFragment);
-            transaction.addToBackStack(Splash.class.getName());
-            transaction.commit();
 
-//            TextView userId = (TextView) view.findViewById(R.id.userID);
-//
-//            ArrayList<String> arr = api.getAllCustomers();
-//
-//            for(int i=0; i<arr.size();i++){
-//
-//                if("1" == arr.get(i))
-//                {
-//
-//
-//                };
-//            }
-        }
+            EditText userId = (EditText) findViewById(R.id.userID);
+
+            ArrayList<String> arr = api.getAllCustomers();
+
+            //test
+            DataSourceFacade dsf = new DataSourceFacade(this);
+            int orderamount = dsf.getAllOrders().size();
+            Toast.makeText(this,""+orderamount,Toast.LENGTH_LONG).show();
+            //test
+            if (arr.contains(userId.getText().toString())){
+                costumerNumber = userId.getText().toString();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, newFragment);
+                transaction.addToBackStack(Splash.class.getName());
+                transaction.commit();
+            }
+            else {
+                Toast.makeText(this,"Incorrect customer id",Toast.LENGTH_LONG).show();
+            }
+
+
+            }
+
 
 
 
@@ -125,7 +147,6 @@ public class MainActivity extends FragmentActivity implements
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.fragment_main, container, false);
-
 
             return view;
         }

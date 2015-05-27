@@ -92,9 +92,10 @@ public class OldOrdersFragment extends Fragment implements AbsListView.OnItemCli
 
         ArrayList<String> orderToStringed = new ArrayList();
 
-        for(int i = 0; i > orders.size(); i++)
-        {
-            orderToStringed.add(orders.get(i).toString());
+        if (orders != null) {
+            for (int i = 0; i > orders.size(); i++) {
+                orderToStringed.add(orders.get(i).toString());
+            }
         }
 
         mAdapter = new ArrayAdapter<String>(getActivity(),

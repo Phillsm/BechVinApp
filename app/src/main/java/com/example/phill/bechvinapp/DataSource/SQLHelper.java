@@ -47,6 +47,7 @@ public class SQLHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //TODO: READ UP ON ONUPGRADE
+
         onCreate(db);
     }
 

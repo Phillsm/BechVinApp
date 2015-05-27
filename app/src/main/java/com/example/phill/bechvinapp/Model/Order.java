@@ -26,12 +26,12 @@ public class Order {
         this.date = date;
         this.att = att;
 
-        for(Product p : products.keySet()){
-            int amount = products.get(p);
-            for(int i = 0; i<amount; i++){
-                price += p.getPrice();
-            }
-        }
+//        for(Product p : products.keySet()){
+//            int amount = products.get(p);
+//            for(int i = 0; i<amount; i++){
+//                price += p.getPrice();
+//            }
+//        }
         //TODO: iterate hashmap and get accumulative price
     }
     public Order(Status status, String costumer, Date date, String att) {
@@ -46,10 +46,10 @@ public class Order {
     public void addProductAmount(Product product, int amount){
 
         if(products.containsKey(product)){
-            products.put(product,(products.get(product) + 1));
+            products.put(product,(products.get(product) + amount));
         }
         else{
-            products.put(product,1);
+            products.put(product,amount);
         }
 
 

@@ -60,6 +60,7 @@ public class ApiHelper {
         try {
             JSONArray jarray = new JSONArray(json);
 
+            Log.d("BechWineApp",json);
             Log.d("BechWineApp", "" + jarray.length());
 
             for(int i = 0; i<jarray.length(); i++){
@@ -68,7 +69,7 @@ public class ApiHelper {
                 customers.add(id);
 
             }
-            Log.d("BechWineApp","Finished parsing wine json");
+            Log.d("BechWineApp","Finished parsing costumer json");
         }
         catch(Exception e){
             Log.d("BechWineApp", "Error in makin jarray" + e.getMessage() +"\n" + e.getStackTrace().toString());
