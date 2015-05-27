@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.phill.bechvinapp.Model.Order;
 import com.example.phill.bechvinapp.Model.Product;
@@ -72,7 +73,7 @@ public class OrderDataSource {
         }
 
         for(ContentValues cv : values){
-            database.insert("ORDERPRODUCTS","productamount",cv);
+            database.insertWithOnConflict("ORDERPRODUCTS", "productamount", cv, SQLiteDatabase.CONFLICT_IGNORE);
         }
 
     }
@@ -102,7 +103,8 @@ public class OrderDataSource {
 
         if (c.getCount() > 0) {
             c.moveToFirst();
-            do {
+            while(c.isAfterLast() == false){
+
                 String id = c.getString(0);
                 String costumer = c.getString(1);
                 String att = c.getString(2);
@@ -116,7 +118,7 @@ public class OrderDataSource {
                 orders.add(order);
 
                 c.moveToNext();
-            } while (!c.isLast());
+            }
         }
         c.close();
 
@@ -150,7 +152,8 @@ public class OrderDataSource {
         if (c.getCount() > 0) {
             c.moveToFirst();
 
-            do {
+            Log.i("BechWineApp","cursor has: "+c.getCount());
+            while(c.isAfterLast() == false){
                 int amount = c.getInt(4);
                 String name = c.getString(2);
                 String id = c.getString(1);
@@ -159,7 +162,9 @@ public class OrderDataSource {
                 productmap.put(p, amount);
 
                 c.moveToNext();
-            } while (!c.isLast());
+            }
+           // do {
+           // } while (!c.isLast());
         }
         c.close();
 

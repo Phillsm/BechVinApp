@@ -23,18 +23,18 @@ public class DataSourceFacade {
 
     public List<Order> getAllOrders(){
         List<Order> orders = null;
-        try{
+       // try{
             odc.open();
             odc.beginTransaction();
 
             orders = odc.getAllOrders();
-        }catch (Exception e){
-            Log.e("BechWineApp", e.getMessage() + "\n"+stackTraceToString(e));
-        }
-        finally {
+       // }catch (Exception e){
+       //     Log.e("BechWineApp", e.getMessage() + "\n"+stackTraceToString(e));
+       // }
+       // finally {
             odc.endTransaction();
             odc.close();
-        }
+      //  }
         return orders;
     }
 
