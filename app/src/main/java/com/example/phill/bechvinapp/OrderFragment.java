@@ -7,7 +7,18 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.phill.bechvinapp.Model.Order;
+import com.example.phill.bechvinapp.Model.Product;
+
+import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 
 /**
@@ -27,6 +38,8 @@ public class OrderFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    Order order = null;
 
 
     private OnFragmentInteractionListener mListener;
@@ -53,6 +66,10 @@ public class OrderFragment extends Fragment {
 
     }
 
+    public OrderFragment(Order order){
+       this.order = order;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,8 +91,31 @@ public class OrderFragment extends Fragment {
         //TextView paramTest = (TextView) view.findViewById(R.id.textView1);
         //paramTest.setText(savedInstanceState.get(mParam1).toString());
 
-        TextView paramTest = (TextView) view.findViewById(R.id.textView2);
-        paramTest.setText(OrderFragment.ARG_PARAM1);
+        //TextView paramTest = (TextView) view.findViewById(R.id.textView2);
+        //paramTest.setText(OrderFragment.ARG_PARAM1);
+
+        TextView kunde = (TextView) view.findViewById(R.id.textViewKunde);
+        kunde.setText(order.getCostumer());
+
+        TextView pris = (TextView) view.findViewById(R.id.textViewPris);
+        pris.setText(order.getPrice() + "");
+
+        TextView dato = (TextView) view.findViewById(R.id.textViewDato);
+        dato.setText(new SimpleDateFormat("dd/MM/yyyy, HH:mm").format(order.getDate()));
+
+
+        ListView produkter = (ListView) view.findViewById(R.id.listViewOrderProducts);
+        ArrayList<String> productstringlist = new ArrayList<>();
+        if(order.getProducts() != null){
+            for(Product product : order.getProducts().keySet()){
+                String productstring = product.getName() + " Antal: " + order.getProducts().get(product);
+                productstringlist.add(productstring);
+
+            }
+        }
+        ListAdapter la = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1, android.R.id.text1, productstringlist);
+
+        produkter.setAdapter(la);
 
         return view;
 
@@ -88,22 +128,6 @@ public class OrderFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mListener = (OnFragmentInteractionListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -114,6 +138,22 @@ public class OrderFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
+//    @Override
+//    public void onAttach(Activity activity) {
+//        super.onAttach(activity);
+//        try {
+//            mListener = (OnFragmentInteractionListener) activity;
+//        } catch (ClassCastException e) {
+//            throw new ClassCastException(activity.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
+//    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);

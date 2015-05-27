@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.phill.bechvinapp.DataSource.ApiHelper;
@@ -101,7 +102,10 @@ public class OldOrdersFragment extends Fragment implements AbsListView.OnItemCli
         mAdapter = new ArrayAdapter<String>(getActivity(),
         android.R.layout.simple_list_item_1, android.R.id.text1, orderToStringed);
 
+
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -144,10 +148,10 @@ public class OldOrdersFragment extends Fragment implements AbsListView.OnItemCli
     }
 
 
-    public void startOrderFragment(String param1,String param2){
+    public void startOrderFragment(Order order){
 
         //OrderFragment.newInstance(param1,param2);
-        OrderFragment newFragment = new OrderFragment();
+        OrderFragment newFragment = new OrderFragment(order);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.container, newFragment);
         transaction.addToBackStack(null);
@@ -157,13 +161,13 @@ public class OldOrdersFragment extends Fragment implements AbsListView.OnItemCli
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        //startOrderFragment("hue","hu3");
+        DataSourceFacade dsf = new DataSourceFacade(getActivity().getBaseContext());
+        List<Order> orders = dsf.getAllOrders();
+        Order selectedOrder = orders.get(position);
 
+        startOrderFragment(selectedOrder);
+        //Toast.makeText(getActivity().getBaseContext(),"TEST: " + selectedOrder.toString(),Toast.LENGTH_LONG).show();
         if (null != mListener) {
-            // Notify the active callbacks interface (the activity, if the
-            // fragment is attached to one) that an item has been selected.
-            //mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
-            //startOrderFragment("hue","hu3");
 
         }
     }
