@@ -24,6 +24,7 @@ import com.example.phill.bechvinapp.DataSource.ApiHelper;
 import com.example.phill.bechvinapp.DataSource.ApiMock;
 import com.example.phill.bechvinapp.DataSource.DataSourceFacade;
 import com.example.phill.bechvinapp.Model.Order;
+import com.example.phill.bechvinapp.Model.Product;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -55,9 +56,13 @@ public class MainActivity extends FragmentActivity implements
         }
 
         ///testtest
+        ApiHelper apihelp = new ApiHelper(this);
         Order test = new Order(Order.Status.Created,"1337",new Date(),"attperson");
+        test.addProductAmount(apihelp.getAllWines().get(2),2);
+        test.addProductAmount(apihelp.getAllWines().get(12),5);
 
         DataSourceFacade dsf = new DataSourceFacade(this);
+
         dsf.saveOrder(test);
         //testest
 

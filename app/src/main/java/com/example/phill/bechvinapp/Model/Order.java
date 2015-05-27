@@ -13,7 +13,6 @@ public class Order {
     HashMap<Product,Integer> products;
     Date date;
     String att;
-    Double price;
 
     public enum Status {
         Created, Sent, Delivered, Billed
@@ -40,7 +39,6 @@ public class Order {
         this.products = new HashMap<>();
         this.date = date;
         this.att = att;
-        this.price = 0.0;
     }
 
     public void addProductAmount(Product product, int amount){
@@ -50,11 +48,6 @@ public class Order {
         }
         else{
             products.put(product,amount);
-        }
-
-
-        for(int i = 0; i<amount; i++){
-            this.price += product.getPrice();
         }
     }
 
@@ -79,7 +72,18 @@ public class Order {
     }
 
     public Double getPrice() {
-        return price;
+        if (products == null){
+            return 0.0;
+        }else{
+          double price = 0.0;
+          for(Product p : products.keySet()){
+            int amount = products.get(p);
+            for(int i = 0; i<amount; i++){
+                price += p.getPrice();
+            }
+          }
+          return price;
+        }
     }
 
     public boolean send(){
