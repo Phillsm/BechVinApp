@@ -18,7 +18,8 @@
         android:minWidth="200dp"
         android:layout_above="@+id/oldOrdersButton"
         android:layout_alignLeft="@+id/oldOrdersButton"
-        android:layout_alignStart="@+id/oldOrdersButton" />
+        android:layout_alignStart="@+id/oldOrdersButton"
+        android:background="@color/dim_foreground_disabled_material_light" />
 
     <Button
         android:layout_width="wrap_content"
@@ -29,7 +30,8 @@
         android:minHeight="150dp"
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/viewProductsButton"
-        android:layout_alignStart="@+id/viewProductsButton" />
+        android:layout_alignStart="@+id/viewProductsButton"
+        android:background="@color/dim_foreground_disabled_material_light" />
 
     <Button
         android:layout_width="wrap_content"
@@ -45,6 +47,7 @@
         android:focusableInTouchMode="false"
         android:focusable="true"
         android:elegantTextHeight="false"
-        android:nestedScrollingEnabled="false" />
+        android:nestedScrollingEnabled="false"
+        android:background="@color/dim_foreground_disabled_material_light" />
 
 </RelativeLayout>

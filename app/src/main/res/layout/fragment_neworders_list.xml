@@ -21,7 +21,8 @@
         android:layout_height="68dp"
         android:text="@string/add_order_button"
         android:id="@+id/placeOrderButton"
-        android:layout_gravity="center_horizontal|bottom" />
+        android:layout_gravity="center_horizontal|bottom"
+        android:background="@drawable/abc_ic_menu_paste_mtrl_am_alpha" />
 
 
 </FrameLayout>
