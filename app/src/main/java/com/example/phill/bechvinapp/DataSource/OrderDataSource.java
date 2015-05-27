@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -60,7 +61,7 @@ public class OrderDataSource {
             database.setTransactionSuccessful();
     }
 
-    private void saveProducts(String orderid, HashMap<Product,Integer> products) throws SQLException {
+    private void saveProducts(String orderid, Map<Product,Integer> products) throws SQLException {
         ArrayList<ContentValues> values = new ArrayList<>();
         for(Product p : products.keySet()){
             ContentValues value = new ContentValues();

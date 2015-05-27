@@ -2,6 +2,9 @@ package com.example.phill.bechvinapp.Model;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by Phill on 12-05-2015.
@@ -10,7 +13,7 @@ import java.util.HashMap;
 public class Order {
     Status status;
     String costumer;
-    HashMap<Product,Integer> products;
+    Map<Product,Integer> products;
     Date date;
     String att;
 
@@ -18,7 +21,7 @@ public class Order {
         Created, Sent, Delivered, Billed
     }
 
-    public Order(String costumer, HashMap<Product, Integer> products, Date date, String att) {
+    public Order(String costumer, Map<Product, Integer> products, Date date, String att) {
         this.status = Status.Created;
         this.costumer = costumer;
         this.products = products;
@@ -36,18 +39,18 @@ public class Order {
     public Order(Status status, String costumer, Date date, String att) {
         this.status = Status.Created;;
         this.costumer = costumer;
-        this.products = new HashMap<>();
+        this.products = new Hashtable<>();
         this.date = date;
         this.att = att;
     }
 
     public void addProductAmount(Product product, int amount){
 
-        if(products.containsKey(product)){
-            products.put(product,(products.get(product) + amount));
-        }
-        else{
-            products.put(product,amount);
+        products.put(product,amount);
+        for(Product p : products.keySet()){
+            if(p.id.equals(product.getId())){
+                products.put(product,(products.get(product) + amount));
+            }
         }
     }
 
@@ -59,7 +62,7 @@ public class Order {
         return costumer;
     }
 
-    public HashMap<Product, Integer> getProducts() {
+    public Map<Product, Integer> getProducts() {
         return products;
     }
 
