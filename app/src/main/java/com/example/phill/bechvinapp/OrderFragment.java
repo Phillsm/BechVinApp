@@ -8,10 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.phill.bechvinapp.DataSource.DataSourceFacade;
 import com.example.phill.bechvinapp.Model.Order;
 import com.example.phill.bechvinapp.Model.Product;
 
@@ -19,6 +22,7 @@ import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 /**
@@ -29,7 +33,7 @@ import java.util.ArrayList;
  * Use the {@link OrderFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OrderFragment extends Fragment {
+public class OrderFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -86,6 +90,9 @@ public class OrderFragment extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_order, container, false);
+
+        Button bt = (Button) view.findViewById(R.id.buttonReorder);
+        bt.setOnClickListener(this);
 
 
         //TextView paramTest = (TextView) view.findViewById(R.id.textView1);
@@ -154,6 +161,16 @@ public class OrderFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    @Override
+    public void onClick(View v) {
+       Order neworder =  new Order(order.getCostumer(),order.getProducts(),new Date(),order.getAtt());
+        DataSourceFacade dsf = new DataSourceFacade(getActivity().getBaseContext());
+        dsf.saveOrder(neworder);
+
+        Toast.makeText(getActivity().getBaseContext(),"Order has been remade",Toast.LENGTH_LONG).show();
+    }
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
