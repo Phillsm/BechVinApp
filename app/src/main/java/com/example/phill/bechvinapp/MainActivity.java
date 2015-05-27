@@ -48,13 +48,15 @@ public class MainActivity extends FragmentActivity implements
         }
 
         ///testtest
-//        ApiHelper apihelp = new ApiHelper(this);
+//      ApiHelper apihelp = new ApiHelper(this);
 //        Order test = new Order(Order.Status.Created,"1337",new Date(),"attperson");
 //        test.addProductAmount(apihelp.getAllWines().get(2),2);
 //        test.addProductAmount(apihelp.getAllWines().get(12),5);
-//
+//        test.addProductAmount(apihelp.getAllWines().get(12),2);
+
+
 //        DataSourceFacade dsf = new DataSourceFacade(this);
-//
+
 //        dsf.saveOrder(test);
         //testest
 
