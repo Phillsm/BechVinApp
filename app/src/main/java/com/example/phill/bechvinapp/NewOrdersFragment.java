@@ -59,9 +59,12 @@ public class NewOrdersFragment extends Fragment implements AbsListView.OnItemCli
      * Views.
      */
     private ListAdapter mAdapter;
-    private HashMap<Product, Integer> productsForOrder = new HashMap<>();
+//    private HashMap<Product, Integer> productsForOrder = new HashMap<>();
+    Order o = new Order(Order.Status.Created,MainActivity.costumerNumber,new Date(),"" );
 
-    // TODO: Rename and change types of parameters
+
+
+        // TODO: Rename and change types of parameters
     public static NewOrdersFragment newInstance(String param1, String param2) {
         NewOrdersFragment fragment = new NewOrdersFragment();
         Bundle args = new Bundle();
@@ -174,7 +177,10 @@ public class NewOrdersFragment extends Fragment implements AbsListView.OnItemCli
             CharSequence text = "Added!  " + products.get(position).getName();
             int duration = Toast.LENGTH_SHORT;
 
-            productsForOrder.put(products.get(position), 1);
+            o.addProductAmount(products.get(position),1);
+//          productsForOrder.put(products.get(position), 1);
+
+
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
@@ -196,7 +202,8 @@ public class NewOrdersFragment extends Fragment implements AbsListView.OnItemCli
     @Override
     public void onClick(View v) {
 
-        Order o = new Order(MainActivity.costumerNumber,productsForOrder,new Date(),"attperson");
+        //Order o = new Order(MainActivity.costumerNumber,productsForOrder,new Date(),"attperson");
+
         DataSourceFacade dsf = new DataSourceFacade(getActivity().getBaseContext());
 
         dsf.saveOrder(o);
