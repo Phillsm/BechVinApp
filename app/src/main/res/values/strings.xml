@@ -9,5 +9,6 @@
     <string name = "place_new_order_button">Ny Ordre</string>
     <string name = "old_orders_button">Tidligere Ordre</string>
     <string name = "view_products_button">Se Produkter</string>
+    <string name = "add_order_button"> Placer Ordre</string>
 
 </resources>

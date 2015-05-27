@@ -88,8 +88,6 @@ public class NewProductsFragment extends Fragment implements AbsListView.OnItemC
         ArrayList<String> productstoStringed = new ArrayList();
 
 
-
-
         for(int i = 0; i < products.size(); i++)
         {
 
