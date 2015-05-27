@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.phill.bechvinapp.DataSource.ApiHelper;
 import com.example.phill.bechvinapp.DataSource.DataSourceFacade;
 import com.example.phill.bechvinapp.Model.Order;
+import com.example.phill.bechvinapp.Model.Product;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,9 +48,13 @@ public class MainActivity extends FragmentActivity implements
         }
 
         ///testtest
+        ApiHelper apihelp = new ApiHelper(this);
         Order test = new Order(Order.Status.Created,"1337",new Date(),"attperson");
+        test.addProductAmount(apihelp.getAllWines().get(2),2);
+        test.addProductAmount(apihelp.getAllWines().get(12),5);
 
         DataSourceFacade dsf = new DataSourceFacade(this);
+
         dsf.saveOrder(test);
         //testest
 
@@ -84,19 +89,11 @@ public class MainActivity extends FragmentActivity implements
 
             }
 
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
 
-
-
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
-
-
         return true;
     }
 
@@ -114,8 +111,6 @@ public class MainActivity extends FragmentActivity implements
 
         return super.onOptionsItemSelected(item);
     }
-
-
 
     @Override
     public void onFragmentInteraction(Uri uri) {

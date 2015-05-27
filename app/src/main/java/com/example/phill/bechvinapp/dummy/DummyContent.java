@@ -2,9 +2,6 @@ package com.example.phill.bechvinapp.dummy;
 
 import com.example.phill.bechvinapp.Model.Order;
 import com.example.phill.bechvinapp.Model.Product;
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +23,7 @@ public class DummyContent {
     /**
      * A map of sample (dummy) items, by ID.
      */
+
     public static Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
 
     static {
@@ -38,7 +36,6 @@ public class DummyContent {
     public static ArrayList<Order> orders = new ArrayList<>();
     static
 
-     
     {
         Product p1 = new Product("Vin1","1",2.1);
         Product p2 = new Product("Vin2","2",2.2);
@@ -58,16 +55,11 @@ public class DummyContent {
         Order o3 = new Order("3",dummyHashMap,date,"");
         Order o4 = new Order("4",dummyHashMap,date,"");
 
-
         orders.add(o1);
         orders.add(o2);
         orders.add(o3);
         orders.add(o4);
-
-
     }
-
-
 
     private static void addItem(DummyItem item) {
         ITEMS.add(item);

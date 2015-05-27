@@ -16,8 +16,12 @@
 
         />
 
-
-
+    <Button
+        android:layout_width="364dp"
+        android:layout_height="68dp"
+        android:text="@string/add_order_button"
+        android:id="@+id/placeOrderButton"
+        android:layout_gravity="center_horizontal|bottom" />
 
 
 </FrameLayout>
