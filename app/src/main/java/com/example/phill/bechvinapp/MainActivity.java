@@ -48,14 +48,14 @@ public class MainActivity extends FragmentActivity implements
         }
 
         ///testtest
-        ApiHelper apihelp = new ApiHelper(this);
-        Order test = new Order(Order.Status.Created,"1337",new Date(),"attperson");
-        test.addProductAmount(apihelp.getAllWines().get(2),2);
-        test.addProductAmount(apihelp.getAllWines().get(12),5);
-
-        DataSourceFacade dsf = new DataSourceFacade(this);
-
-        dsf.saveOrder(test);
+//        ApiHelper apihelp = new ApiHelper(this);
+//        Order test = new Order(Order.Status.Created,"1337",new Date(),"attperson");
+//        test.addProductAmount(apihelp.getAllWines().get(2),2);
+//        test.addProductAmount(apihelp.getAllWines().get(12),5);
+//
+//        DataSourceFacade dsf = new DataSourceFacade(this);
+//
+//        dsf.saveOrder(test);
         //testest
 
     }
@@ -71,9 +71,9 @@ public class MainActivity extends FragmentActivity implements
             ArrayList<String> arr = api.getAllCustomers();
 
             //test
-            DataSourceFacade dsf = new DataSourceFacade(this);
-            int orderamount = dsf.getAllOrders().size();
-            Toast.makeText(this,""+orderamount,Toast.LENGTH_LONG).show();
+//            DataSourceFacade dsf = new DataSourceFacade(this);
+//            int orderamount = dsf.getAllOrders().size();
+//            Toast.makeText(this,""+orderamount,Toast.LENGTH_LONG).show();
             //test
             if (arr.contains(userId.getText().toString())){
                 costumerNumber = userId.getText().toString();

@@ -36,7 +36,7 @@ import java.util.Map;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class NewProductsFragment extends Fragment implements AbsListView.OnItemClickListener, View.OnClickListener {
+public class NewOrdersFragment extends Fragment implements AbsListView.OnItemClickListener, View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,8 +62,8 @@ public class NewProductsFragment extends Fragment implements AbsListView.OnItemC
     private HashMap<Product, Integer> productsForOrder = new HashMap<>();
 
     // TODO: Rename and change types of parameters
-    public static NewProductsFragment newInstance(String param1, String param2) {
-        NewProductsFragment fragment = new NewProductsFragment();
+    public static NewOrdersFragment newInstance(String param1, String param2) {
+        NewOrdersFragment fragment = new NewOrdersFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -75,7 +75,7 @@ public class NewProductsFragment extends Fragment implements AbsListView.OnItemC
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public NewProductsFragment() {
+    public NewOrdersFragment() {
     }
 
     @Override

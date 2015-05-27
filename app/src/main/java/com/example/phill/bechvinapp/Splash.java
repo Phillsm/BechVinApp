@@ -78,8 +78,8 @@ public class Splash extends Fragment implements
         View view = inflater.inflate(R.layout.fragment_splash, container, false);
 
 
-        Button browseProducts = (Button) view.findViewById(R.id.viewProductsButton);
-        browseProducts.setOnClickListener(this);
+//        Button browseProducts = (Button) view.findViewById(R.id.viewProductsButton);
+//        browseProducts.setOnClickListener(this);
 
         Button oldOrders = (Button) view.findViewById(R.id.oldOrdersButton);
         oldOrders.setOnClickListener(this);
@@ -116,15 +116,15 @@ public class Splash extends Fragment implements
     }
 
 
-    public void startWineFragment(){
-
-        wineFragment newFragment = new wineFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, newFragment.newInstance());
-        transaction.addToBackStack(null);
-        transaction.commit();
-
-    }
+//    public void startWineFragment(){
+//
+//        wineFragment newFragment = new wineFragment();
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//        transaction.replace(R.id.container, newFragment.newInstance());
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//
+//    }
 
     public void startOldOrdersFragment(){
 
@@ -154,9 +154,9 @@ public class Splash extends Fragment implements
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.viewProductsButton:
-            startWineFragment();
-                break;
+//            case R.id.viewProductsButton:
+//            startWineFragment();
+//                break;
             case R.id.oldOrdersButton:
             startOldOrdersFragment();
                 break;
