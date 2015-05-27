@@ -1,27 +1,19 @@
 package com.example.phill.bechvinapp;
 
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.phill.bechvinapp.DataSource.ApiHelper;
-import com.example.phill.bechvinapp.DataSource.ApiMock;
 import com.example.phill.bechvinapp.DataSource.DataSourceFacade;
 import com.example.phill.bechvinapp.Model.Order;
 import com.example.phill.bechvinapp.Model.Product;
@@ -33,7 +25,7 @@ import java.util.Date;
 public class MainActivity extends FragmentActivity implements
         Splash.OnFragmentInteractionListener,
         wineFragment.OnFragmentInteractionListener,
-        NewProductsFragment.OnFragmentInteractionListener,
+        NewOrdersFragment.OnFragmentInteractionListener,
         OldOrdersFragment.OnFragmentInteractionListener
 {
 
@@ -56,14 +48,14 @@ public class MainActivity extends FragmentActivity implements
         }
 
         ///testtest
-        ApiHelper apihelp = new ApiHelper(this);
-        Order test = new Order(Order.Status.Created,"1337",new Date(),"attperson");
-        test.addProductAmount(apihelp.getAllWines().get(2),2);
-        test.addProductAmount(apihelp.getAllWines().get(12),5);
-
-        DataSourceFacade dsf = new DataSourceFacade(this);
-
-        dsf.saveOrder(test);
+//        ApiHelper apihelp = new ApiHelper(this);
+//        Order test = new Order(Order.Status.Created,"1337",new Date(),"attperson");
+//        test.addProductAmount(apihelp.getAllWines().get(2),2);
+//        test.addProductAmount(apihelp.getAllWines().get(12),5);
+//
+//        DataSourceFacade dsf = new DataSourceFacade(this);
+//
+//        dsf.saveOrder(test);
         //testest
 
     }
@@ -79,9 +71,9 @@ public class MainActivity extends FragmentActivity implements
             ArrayList<String> arr = api.getAllCustomers();
 
             //test
-            DataSourceFacade dsf = new DataSourceFacade(this);
-            int orderamount = dsf.getAllOrders().size();
-            Toast.makeText(this,""+orderamount,Toast.LENGTH_LONG).show();
+//            DataSourceFacade dsf = new DataSourceFacade(this);
+//            int orderamount = dsf.getAllOrders().size();
+//            Toast.makeText(this,""+orderamount,Toast.LENGTH_LONG).show();
             //test
             if (arr.contains(userId.getText().toString())){
                 costumerNumber = userId.getText().toString();
@@ -97,19 +89,11 @@ public class MainActivity extends FragmentActivity implements
 
             }
 
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
 
-
-
         getMenuInflater().inflate(R.menu.menu_main, menu);
-
-
-
         return true;
     }
 
@@ -127,8 +111,6 @@ public class MainActivity extends FragmentActivity implements
 
         return super.onOptionsItemSelected(item);
     }
-
-
 
     @Override
     public void onFragmentInteraction(Uri uri) {

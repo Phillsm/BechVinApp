@@ -1,18 +1,14 @@
 package com.example.phill.bechvinapp;
 
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 
 /**
@@ -25,7 +21,7 @@ import android.widget.Toast;
  */
 public class Splash extends Fragment implements
         wineFragment.OnFragmentInteractionListener,
-        NewProductsFragment.OnFragmentInteractionListener,
+        NewOrdersFragment.OnFragmentInteractionListener,
         OldOrdersFragment.OnFragmentInteractionListener,
         View.OnClickListener{
 
@@ -82,8 +78,8 @@ public class Splash extends Fragment implements
         View view = inflater.inflate(R.layout.fragment_splash, container, false);
 
 
-        Button browseProducts = (Button) view.findViewById(R.id.viewProductsButton);
-        browseProducts.setOnClickListener(this);
+//        Button browseProducts = (Button) view.findViewById(R.id.viewProductsButton);
+//        browseProducts.setOnClickListener(this);
 
         Button oldOrders = (Button) view.findViewById(R.id.oldOrdersButton);
         oldOrders.setOnClickListener(this);
@@ -120,15 +116,15 @@ public class Splash extends Fragment implements
     }
 
 
-    public void startWineFragment(){
-
-        wineFragment newFragment = new wineFragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, newFragment.newInstance());
-        transaction.addToBackStack(null);
-        transaction.commit();
-
-    }
+//    public void startWineFragment(){
+//
+//        wineFragment newFragment = new wineFragment();
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//        transaction.replace(R.id.container, newFragment.newInstance());
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//
+//    }
 
     public void startOldOrdersFragment(){
 
@@ -142,7 +138,7 @@ public class Splash extends Fragment implements
 
     public void startNewOrderFragment(){
 
-        NewProductsFragment newFragment = new NewProductsFragment();
+        NewOrdersFragment newFragment = new NewOrdersFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.container, newFragment.newInstance("",""));
         transaction.addToBackStack(null);
@@ -158,9 +154,9 @@ public class Splash extends Fragment implements
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.viewProductsButton:
-            startWineFragment();
-                break;
+//            case R.id.viewProductsButton:
+//            startWineFragment();
+//                break;
             case R.id.oldOrdersButton:
             startOldOrdersFragment();
                 break;
