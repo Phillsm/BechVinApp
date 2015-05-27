@@ -1,27 +1,19 @@
 package com.example.phill.bechvinapp;
 
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.phill.bechvinapp.DataSource.ApiHelper;
-import com.example.phill.bechvinapp.DataSource.ApiMock;
 import com.example.phill.bechvinapp.DataSource.DataSourceFacade;
 import com.example.phill.bechvinapp.Model.Order;
 
@@ -32,7 +24,7 @@ import java.util.Date;
 public class MainActivity extends FragmentActivity implements
         Splash.OnFragmentInteractionListener,
         wineFragment.OnFragmentInteractionListener,
-        NewProductsFragment.OnFragmentInteractionListener,
+        NewOrdersFragment.OnFragmentInteractionListener,
         OldOrdersFragment.OnFragmentInteractionListener
 {
 

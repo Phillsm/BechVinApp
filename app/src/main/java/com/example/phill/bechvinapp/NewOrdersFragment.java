@@ -28,7 +28,7 @@ import java.util.ArrayList;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class NewProductsFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class NewOrdersFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -53,8 +53,8 @@ public class NewProductsFragment extends Fragment implements AbsListView.OnItemC
     private ListAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
-    public static NewProductsFragment newInstance(String param1, String param2) {
-        NewProductsFragment fragment = new NewProductsFragment();
+    public static NewOrdersFragment newInstance(String param1, String param2) {
+        NewOrdersFragment fragment = new NewOrdersFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -66,7 +66,7 @@ public class NewProductsFragment extends Fragment implements AbsListView.OnItemC
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public NewProductsFragment() {
+    public NewOrdersFragment() {
     }
 
     @Override
@@ -110,7 +110,7 @@ public class NewProductsFragment extends Fragment implements AbsListView.OnItemC
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_newproducts, container, false);
+        View view = inflater.inflate(R.layout.fragment_neworders_list, container, false);
 
         // Set the adapter
         mListView = (AbsListView) view.findViewById(R.id.listtest);
